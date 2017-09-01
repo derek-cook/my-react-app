@@ -12,3 +12,10 @@
   overflow: scroll;
 }
 
+h2 {
+  display: inline-block;
+}
+
+.table-options {
+  float: left;
+}

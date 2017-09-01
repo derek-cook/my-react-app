@@ -5,7 +5,7 @@ class Navbar extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-default sidebar">
+      <nav className="navbar navbar-default">
         <div className="container-fluid">
           {/*<!-- Brand and toggle get grouped for better mobile display -->*/}
           <div className="navbar-header">
