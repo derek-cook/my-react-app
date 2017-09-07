@@ -20,7 +20,6 @@ class Table extends Component {
 			<div className="container table-container">
 				<div className="btn-group table-options" role="group" aria-label="...">
 				  <button type="button" className="btn btn-default"><span className="glyphicon glyphicon-plus"></span></button>
-				  <button type="button" className="btn btn-default"><span className="glyphicon glyphicon-edit"></span></button>
 				</div>
 				<h2>{this.props.title}</h2>
 				<table className="table table-responsive table-bordered table-hover">

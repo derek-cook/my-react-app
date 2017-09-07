@@ -24,7 +24,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar/>
-        <Table title="People" items={tableItems}/>
+        <Table title="Employees" items={tableItems}/>
       </div>
     );
   }
