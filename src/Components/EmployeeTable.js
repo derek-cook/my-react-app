@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import TableItem from './TableItem';
 
-class Table extends Component {
+class EmployeeTable extends Component {
 
 
 
 	render() {
 
-		let tableItems;
+    	let tableItems;
 		if (this.props.items) {
 			tableItems = this.props.items.map(item => {
 				return (
@@ -15,6 +15,7 @@ class Table extends Component {
 				);
 			});
 		}
+
 
 		return (
 			<div className="container table-container">
@@ -41,4 +42,4 @@ class Table extends Component {
 		)
 	}
 }
-export default Table;
+export default EmployeeTable;
