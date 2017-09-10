@@ -28,15 +28,13 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Router>
-          <div className="app-router-container">
-            <Route path="/" component={Navbar}></Route>
-            <Route exact path="/" component={DashboardHome}></Route>
-            <Route exact path="/employees" render={() => <EmployeeTable items={tableItems}/>}></Route>
-            <Route exact path="/schedule" component={Schedule}></Route>
-            <Route path="/new-employee" component={Schedule}></Route>
-          </div>
-        </Router>
+        <div className="app-router-container">
+          <Route path="/" component={Navbar}></Route>
+          <Route exact path="/" component={DashboardHome}></Route>
+          <Route exact path="/employees" render={() => <EmployeeTable items={tableItems}/>}></Route>
+          <Route exact path="/schedule" component={Schedule}></Route>
+          <Route path="/new-employee" component={Schedule}></Route>
+        </div>
       </div>
     );
   }

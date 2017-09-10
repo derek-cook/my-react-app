@@ -17,6 +17,8 @@ class EmployeeTable extends Component {
 			});
 		}
 
+		console.log('PROPS: ',this.props);
+
 
 		return (
 			<div className="container table-container">
