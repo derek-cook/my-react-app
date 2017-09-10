@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TableItem from './TableItem';
+import { Link } from 'react-router-dom';
 
 class EmployeeTable extends Component {
 
@@ -20,7 +21,7 @@ class EmployeeTable extends Component {
 		return (
 			<div className="container table-container">
 				<div className="btn-group table-options" role="group" aria-label="...">
-				  <button type="button" className="btn btn-default"><span className="glyphicon glyphicon-plus"></span></button>
+				  <Link to="/employees/new-employee"><button type="button" className="btn btn-default"><span className="glyphicon glyphicon-plus"></span></button></Link>
 				</div>
 				<h2>{this.props.title}</h2>
 				<table className="table table-responsive table-bordered table-hover">

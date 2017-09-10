@@ -34,6 +34,7 @@ class App extends Component {
             <Route exact path="/" component={DashboardHome}></Route>
             <Route exact path="/employees" render={() => <EmployeeTable items={tableItems}/>}></Route>
             <Route exact path="/schedule" component={Schedule}></Route>
+            <Route path="/new-employee" component={Schedule}></Route>
           </div>
         </Router>
       </div>
