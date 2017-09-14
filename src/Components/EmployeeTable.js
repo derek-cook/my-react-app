@@ -18,13 +18,13 @@ class EmployeeTable extends Component {
 			});
 		}
 
-		console.log('PROPS: ',this.props);
+		console.log('PROPS: ',this.props.match.url);
 
 
 		return (
 			<div className="container table-container">
 				<div className="btn-group table-options" role="group" aria-label="...">
-				  <Link to="/employees/new-employee"><button type="button" className="btn btn-default"><span className="glyphicon glyphicon-plus"></span></button></Link>
+				  <Link to={`${this.props.match.url}/new-employee`}><button type="button" className="btn btn-default"><span className="glyphicon glyphicon-plus"></span></button></Link>
 				</div>
 				<h2>{this.props.title}</h2>
 				<table className="table table-responsive table-bordered table-hover">

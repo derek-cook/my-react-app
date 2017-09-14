@@ -4,6 +4,7 @@ import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import DashboardHome from './Components/DashboardHome';
 import EmployeeTable from './Components/EmployeeTable';
+import NewEmployee from './Components/NewEmployee';
 import Schedule from './Components/Schedule';
 
 import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
@@ -29,7 +30,7 @@ class Layout extends Component {
       <div>
         <Navbar/>
         <Route exact path="/" component={DashboardHome}></Route>
-        <Route path="/employees" render={() => <EmployeeTable items={tableItems}/>}></Route>
+        <Route path="/employees" render={(props) => <EmployeeTable {...props} items={tableItems}/>}></Route>
         <Route path="/schedule" component={Schedule}></Route>
         <Footer/>
       </div>
