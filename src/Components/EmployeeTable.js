@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TableItem from './TableItem';
-import { Link } from 'react-router-dom';
+import NewEmployee from './NewEmployee';
+import { Link, Route } from 'react-router-dom';
 
 class EmployeeTable extends Component {
 
@@ -41,6 +42,8 @@ class EmployeeTable extends Component {
 						{tableItems}
 					</tbody>
 				</table>
+				<Route path="/employees/new-employee" component={NewEmployee}></Route>
+
 			</div>
 		)
 	}

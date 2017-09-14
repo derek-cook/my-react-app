@@ -23,7 +23,7 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
               <li><NavLink to="/"><span className="glyphicon glyphicon-home"></span></NavLink></li>
-              <li className="active"><NavLink to="/employees">Employees</NavLink></li>
+              <li><NavLink to="/employees">Employees</NavLink></li>
               <li><NavLink to="/schedule">Schedule</NavLink></li>
               <li className="dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span className="glyphicon glyphicon-plus"></span><span className="caret"></span></a>
