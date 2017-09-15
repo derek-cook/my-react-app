@@ -18,9 +18,6 @@ class EmployeeTable extends Component {
 			});
 		}
 
-		console.log('PROPS: ',this.props.match.url);
-
-
 		return (
 			<div className="container table-container">
 				<div className="btn-group table-options" role="group" aria-label="...">

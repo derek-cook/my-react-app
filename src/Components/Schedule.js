@@ -5,9 +5,9 @@ class Schedule extends Component {
 
 
 	render() {
-		console.log(this.props);
 		return (
 			<h2>Schedule</h2>
+
 		)
 	}
 }
