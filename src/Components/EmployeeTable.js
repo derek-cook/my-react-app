@@ -4,6 +4,9 @@ import NewEmployee from './NewEmployee';
 import { Link, Route } from 'react-router-dom';
 
 class EmployeeTable extends Component {
+	constructor(props) {
+		super(props);
+	}
 
 
 

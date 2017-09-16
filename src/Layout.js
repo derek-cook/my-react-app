@@ -27,10 +27,12 @@ class Layout extends Component {
     ];
 
     return (
-      <div class="layout">
+      <div className="layout">
         <Navbar/>
         <Route exact path="/" component={DashboardHome}></Route>
-        <Route path="/employees" render={(props) => <EmployeeTable {...props} title="Employees" items={tableItems}/>}></Route>
+        <Route path="/employees" render={(props) => 
+          <EmployeeTable {...props} title="Employees" items={tableItems}/>}>
+        </Route>
         <Route path="/schedule" component={Schedule}></Route>
         <Footer/>
       </div>
