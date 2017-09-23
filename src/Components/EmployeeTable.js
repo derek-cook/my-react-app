@@ -5,8 +5,6 @@ import { Link, Route } from 'react-router-dom';
 
 class EmployeeTable extends Component {
 
-
-
 	render() {
 
     	let tableItems;
@@ -18,13 +16,10 @@ class EmployeeTable extends Component {
 			});
 		}
 
-		console.log('PROPS: ',this.props.match.url);
-
-
 		return (
-			<div className="container table-container">
+			<div className="container table-container border-20">
 				<div className="btn-group table-options" role="group" aria-label="...">
-				  <Link to={`${this.props.match.url}/new-employee`}><button type="button" className="btn btn-default"><span className="glyphicon glyphicon-plus"></span></button></Link>
+				  <Link to={`${this.props.match.url}/new-employee`}><button type="button" className="new-employee btn btn-default"><span className="glyphicon glyphicon-plus"></span></button></Link>
 				</div>
 				<h2>{this.props.title}</h2>
 				<table className="table table-responsive table-bordered table-hover">
