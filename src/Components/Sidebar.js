@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Sidebar extends Component {
     render() {
         return (
-            <div className="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+            <div className="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
 
     {/* <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" --> */}
 
