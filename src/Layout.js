@@ -4,9 +4,7 @@ import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import DashboardHome from './Components/DashboardHome';
 import EmployeeTable from './Components/EmployeeTable';
-import NewEmployee from './Components/NewEmployee';
 import Schedule from './Components/Schedule';
-
 import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
 
 

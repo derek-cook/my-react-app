@@ -6,16 +6,11 @@ import Sidebar from './Components/Sidebar';
 
 class App extends Component {
 
-  
-
-
   render() {
-    
-    
     
     return (
       <div className="App">
-        <div className="app-router-container">
+        <div className="wrapper app-router-container">
         <Route path="/" component={Sidebar}></Route>
         <div className="main-panel">
           <Route path="/" component={Layout}></Route>
