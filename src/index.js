@@ -1,14 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './index.css';
-import App from './App';
-import { BrowserRouter as Router } from 'react-router-dom';
-import registerServiceWorker from './registerServiceWorker';
+import { createBrowserHistory } from 'history';
+
+import {
+    Router,
+    Route,
+    Switch
+} from 'react-router-dom';
+
+import App from './containers/App/App.jsx';
+
+import './assets/css/bootstrap.min.css';
+import './assets/css/animate.min.css';
+import './assets/sass/light-bootstrap-dashboard.css';
+// import './assets/css/demo.css';
+import './assets/css/pe-icon-7-stroke.css';
+
+
+
+const history = createBrowserHistory();
 
 ReactDOM.render((
-	<Router>
-		<App/>
-	</Router>
-	), document.getElementById('root'));
-registerServiceWorker();
+    <Router history={history}>
+        <Switch>
+            <Route path="/" name="Home" component={App}/>
+        </Switch>
+    </Router>
+),document.getElementById('root'));
