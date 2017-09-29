@@ -20,7 +20,6 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 
 import {style} from "../../variables/Variables.jsx";
 
-
 class App extends Component {
     constructor(props){
         super(props);
