@@ -1,7 +1,7 @@
 # react-app in progress
 
 ## Quick Start Demo
-1. Clone or donwload the repo into your system.
+1. Clone or download the repo into your system.
 2. If you don't already have it, install NodeJs from [NodeJs Official Page](https://nodejs.org/en).
 3. Open Terminal
 4. Go to your file project
