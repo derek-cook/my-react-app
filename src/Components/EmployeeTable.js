@@ -6,17 +6,39 @@ import { Link, Route } from 'react-router-dom';
 class EmployeeTable extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			employees: []
+		}
+
+		this.addEmployee = this.addEmployee.bind(this);
 	}
 
+	componentDidMount() {
+		this.setState({employees: [{"first_name":"Binky","last_name":"Gorgl","email":"bgorgl0@vkontakte.ru","address":"13198 Lakewood Alley"},
+		{"first_name":"Melli","last_name":"Hackney","email":"mhackney1@washington.edu","address":"1 Coleman Place"},
+		{"first_name":"Ave","last_name":"Disbrey","email":"adisbrey2@nps.gov","address":"79 Fieldstone Lane"},
+		{"first_name":"Frankie","last_name":"Duggan","email":"fduggan3@whitehouse.gov","address":"8 Montana Alley"},
+		{"first_name":"Paddie","last_name":"Lockner","email":"plockner4@blog.com","address":"6679 Dovetail Parkway"}]
+		});
+		console.log("COMPONENT MOUNTED.\n");
+	}
+
+	addEmployee(employee) {
+		let newList = this.state.employees;
+		newList.unshift(employee);
+		this.setState({
+			employees: newList
+		});
+	}
 
 
 	render() {
 
-    	let tableItems;
-		if (this.props.items) {
-			tableItems = this.props.items.map(item => {
+		let newItems;
+		if (this.state.employees) {
+			newItems = this.state.employees.map((item) => {
 				return (
-					<TableItem key={item.id} item={item} />
+					<TableItem key={item.first_name} item={item} />
 				);
 			});
 		}
@@ -32,17 +54,16 @@ class EmployeeTable extends Component {
 						<tr>
 							<th>First Name</th>
 							<th>Last Name</th>
-							<th>Age</th>
-							<th>Gender</th>
-							<th>Height</th>
-							<th>Hair</th>
+							<th>Email</th>
+							<th>Address</th>
 						</tr>
 					</thead>
 					<tbody>
-						{tableItems}
+						<Route path="/employees/new-employee" render={(props) => 
+							<NewEmployee {...props} addEmployee={this.addEmployee}/>}></Route>
+						{newItems}
 					</tbody>
 				</table>
-				<Route path="/employees/new-employee" component={NewEmployee}></Route>
 
 			</div>
 		)

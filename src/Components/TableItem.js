@@ -6,10 +6,8 @@ class TableItem extends Component {
 			<tr>
 				<td>{this.props.item.first_name}</td>
 				<td>{this.props.item.last_name}</td>
-				<td>{this.props.item.age}</td>
-				<td>{this.props.item.gender}</td>
-				<td>{this.props.item.height}</td>
-				<td>{this.props.item.hair}</td>
+				<td>{this.props.item.email}</td>
+				<td>{this.props.item.address}</td>
 			</tr>
 		)
 	}
