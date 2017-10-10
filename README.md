@@ -1,3 +1,3 @@
 # react-app
 
-### To run: ```npm start```
+### To run: ```shell npm start```
