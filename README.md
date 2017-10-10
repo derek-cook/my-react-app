@@ -1,6 +1,3 @@
 # react-app
 
-### To run:
-```
-npm start
-```
+### To run: ```npm start```
