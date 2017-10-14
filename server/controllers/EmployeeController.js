@@ -11,20 +11,44 @@ module.exports = {
         })
     },
 
-    findById: function() {
-
+    findById: function(params, callback) {
+        Employee.findById(params, (err, employees) => {
+            if (err) {
+                callback(err, null);
+                return;
+            }
+            callback(null, employees);
+        });
     },
 
-    create: function() {
-
+    create: function(params, callback) {
+        Employee.create(params, (err, employee) => {
+            if (err) {
+                callback(err, null);
+                return;
+            }
+            callback(null, emmployee);
+        });
     },
 
-    update: function() {
-
+    update: function(id, params, callback) {
+        Employee.findByIdAndUpdate(id, params, {new:true}, (err, employee) => {
+            if (err) {
+                callback(err, null);
+                return;
+            }
+            callback(null, employee);
+        })
     },
 
-    destroy: function() {
-
+    destroy: function(id, callback) {
+        Employee.findByIdAndRemove(id, (err)=> {
+            if (err) {
+                callback(err, null);
+                return;
+            }
+            callback(null, null)
+        })
     }
 
 }

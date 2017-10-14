@@ -7,4 +7,4 @@ var EmployeeSchema = mongoose.Schema({
     address: {type:String, default:''}
 });
 
-export default mongoose.model('EmployeeSchema', EmployeeSchema);
+module.exports = mongoose.model('EmployeeSchema', EmployeeSchema);
