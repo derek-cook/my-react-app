@@ -7,12 +7,21 @@ router.get('/:resource', (req, res, next) => {
     var resource = req.params.resource;
 
     if (resource == 'employee') {
-        
+        EmployeeController.find(req.query, (err, results) => {
+            if (err) {
+                res.json({
+                    confirmation: 'fail',
+                    message: err
+                });
+                return;
+            }
+            res.json({
+                confirmation: 'successs',
+                results: results
+            });
+        })
     }
-    res.json({
-        confirmation: 'SUCCESS',
-        resource: resource
-    });
+
 });
 
 module.exports = router;
