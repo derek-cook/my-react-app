@@ -17,7 +17,6 @@ router.get('/:resource', (req, res, next) => {
     }
 
     controller.find(req.query, (err, results) => {
-        console.log("req: ", req);
         if (err) {
             res.json({
                 confirmation: 'fail',
