@@ -27,6 +27,7 @@ class NewEmployee extends Component {
 	}
 
 	handleSubmit() {
+		// forward the sumbission to the parent container EmployeeTable for POST request in addEmployee()
 		console.log("form submitted: ", this.state);
 		this.props.addEmployee(Object.assign({}, this.state));
 	}

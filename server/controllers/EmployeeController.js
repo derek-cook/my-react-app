@@ -27,7 +27,7 @@ module.exports = {
                 callback(err, null);
                 return;
             }
-            callback(null, emmployee);
+            callback(null, employee);
         });
     },
 

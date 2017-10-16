@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TableItem from './TableItem';
 import NewEmployee from './NewEmployee';
 import { Link, Route } from 'react-router-dom';
+import APIManager from '../utils/APIManager';
 
 class EmployeeTable extends Component {
 	constructor(props) {
@@ -14,20 +15,42 @@ class EmployeeTable extends Component {
 	}
 
 	componentDidMount() {
-		this.setState({employees: [{"first_name":"Binky","last_name":"Gorgl","email":"bgorgl0@vkontakte.ru","address":"13198 Lakewood Alley"},
-		{"first_name":"Melli","last_name":"Hackney","email":"mhackney1@washington.edu","address":"1 Coleman Place"},
-		{"first_name":"Ave","last_name":"Disbrey","email":"adisbrey2@nps.gov","address":"79 Fieldstone Lane"},
-		{"first_name":"Frankie","last_name":"Duggan","email":"fduggan3@whitehouse.gov","address":"8 Montana Alley"},
-		{"first_name":"Paddie","last_name":"Lockner","email":"plockner4@blog.com","address":"6679 Dovetail Parkway"}]
-		});
 		console.log("COMPONENT MOUNTED.\n");
+		// use API Manager util (or make axios get request here)
+		let updatedState = Object.assign({}, this.state);
+		APIManager.get('/api/employee', null, (err, res) => {
+			res.results.map((employee) => {
+				updatedState.employees.push(employee);
+			});
+			this.setState(updatedState);
+		});
+
+		// Any code writen here might be processed before the above GET request is finished!
+
+		// this.setState({employees: [{"first_name":"Binky","last_name":"Gorgl","email":"bgorgl0@vkontakte.ru","address":"13198 Lakewood Alley"},
+		// {"first_name":"Melli","last_name":"Hackney","email":"mhackney1@washington.edu","address":"1 Coleman Place"},
+		// {"first_name":"Ave","last_name":"Disbrey","email":"adisbrey2@nps.gov","address":"79 Fieldstone Lane"},
+		// {"first_name":"Frankie","last_name":"Duggan","email":"fduggan3@whitehouse.gov","address":"8 Montana Alley"},
+		// {"first_name":"Paddie","last_name":"Lockner","email":"plockner4@blog.com","address":"6679 Dovetail Parkway"}]
+		// });
 	}
 
 	addEmployee(employee) {
-		let newList = this.state.employees;
-		newList.unshift(employee);
+
+		let newEmployees = Object.assign({}, this.state.employees);
+
+		APIManager.post('/api/employee', employee, (err, res) => {
+			if(err) {
+				alert('ERROR: ' + err.message);
+				return;
+			}
+			console.log('EMPL CREATED: ' + JSON.stringify(res));
+		})
+
+		let newState = Object.assign({}, this.state);
+		newState.employees.unshift(employee);
 		this.setState({
-			employees: newList
+			employees: newState.employees
 		});
 	}
 
@@ -38,7 +61,7 @@ class EmployeeTable extends Component {
 		if (this.state.employees) {
 			newItems = this.state.employees.map((item) => {
 				return (
-					<TableItem key={item.first_name} item={item} />
+					<TableItem key={item._id} item={item} />
 				);
 			});
 		}
