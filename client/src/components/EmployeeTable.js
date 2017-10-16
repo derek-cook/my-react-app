@@ -16,8 +16,9 @@ class EmployeeTable extends Component {
 
 	componentDidMount() {
 		console.log("COMPONENT MOUNTED.\n");
-		// use API Manager util (or make axios get request here)
+		// use API Manager util (or make axios/fetch get request here)
 		let updatedState = Object.assign({}, this.state);
+		// no payload in GET request, second param is null
 		APIManager.get('/api/employee', null, (err, res) => {
 			res.results.map((employee) => {
 				updatedState.employees.push(employee);
@@ -39,6 +40,7 @@ class EmployeeTable extends Component {
 
 		let newEmployees = Object.assign({}, this.state.employees);
 
+		// the payload (or body of request) is employee, second param
 		APIManager.post('/api/employee', employee, (err, res) => {
 			if(err) {
 				alert('ERROR: ' + err.message);
