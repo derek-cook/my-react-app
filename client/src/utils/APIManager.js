@@ -16,7 +16,6 @@ export default {
     post: (url, body, callback) => {
         fetch('/api/employee', {
             method: 'POST',
-            redirect: 'follow',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-type': 'application/json'
