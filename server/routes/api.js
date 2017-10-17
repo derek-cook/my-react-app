@@ -84,7 +84,8 @@ router.post('/:resource', (req, res, next) => {
 
         res.json({
             confirmation: 'success',
-            result: result
+            result: result,
+            redirectURL: '/employees'
         });
     });
 });

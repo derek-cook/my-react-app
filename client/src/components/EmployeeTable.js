@@ -47,13 +47,16 @@ class EmployeeTable extends Component {
 				return;
 			}
 			console.log('EMPL CREATED: ' + JSON.stringify(res));
+			var createdEmployee = res.result;
+			let newState = Object.assign({}, this.state);
+			newState.employees.unshift(createdEmployee);
+			this.setState({
+				employees: newState.employees
+			});
+			console.log('STATE', this.state);
 		})
 
-		let newState = Object.assign({}, this.state);
-		newState.employees.unshift(employee);
-		this.setState({
-			employees: newState.employees
-		});
+		
 	}
 
 
