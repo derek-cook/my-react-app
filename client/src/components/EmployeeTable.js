@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TableItem from './TableItem';
 import NewEmployee from './NewEmployee';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route,  } from 'react-router-dom';
 import APIManager from '../utils/APIManager';
 
 class EmployeeTable extends Component {
@@ -53,7 +53,8 @@ class EmployeeTable extends Component {
 			this.setState({
 				employees: newState.employees
 			});
-			console.log('STATE', this.state);
+			// handle redirect
+			// window.location.href = 'http://localhost:3000/employees';
 		})
 
 		
