@@ -11,7 +11,8 @@
 6. Go to my-react-app project folder, then ```cd server```
 7. Install dependencies: ```npm install```
 8. Start server: ```npm start```
-9. To test URLs on the server directly, navigate to `http://localhost:3001/`
+9. (Optional) To test requests on the server directly, try in the browser: `http://localhost:3001/api/employee`
+    or use Postman.
 ### Run the client
 10. Go to the my-react-app project, then ```cd client```
 11. Install dependencies: ```npm install```
