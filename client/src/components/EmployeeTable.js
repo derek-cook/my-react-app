@@ -81,6 +81,7 @@ class EmployeeTable extends Component {
 				<table className="table table-responsive table-bordered table-hover">
 					<thead>
 						<tr>
+							<th></th>
 							<th>First Name</th>
 							<th>Last Name</th>
 							<th>Email</th>

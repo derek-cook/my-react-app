@@ -10,7 +10,7 @@ class NewEmployee extends Component {
 			last_name: "",
 			email: "",
 			address: ""
-		}
+		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,6 +30,12 @@ class NewEmployee extends Component {
 		// forward the sumbission to the parent container EmployeeTable for POST request in addEmployee()
 		console.log("form submitted: ", this.state);
 		this.props.addEmployee(Object.assign({}, this.state));
+		this.setState({
+			first_name: "",
+			last_name: "",
+			email: "",
+			address: ""
+		});
 	}
 
 	render() {
