@@ -27,9 +27,10 @@ class TableItem extends Component {
 						<Button 
 							type="button"
 							bsStyle="danger" 
-							bsSize="xsmall">
-							<Glyphicon glyph="remove"
-							onClick={this.handleDelete}/> 
+							bsSize="xsmall"
+							onClick={this.handleDelete}
+						>
+							<Glyphicon glyph="remove"/>
 						</Button>
 						<Button 
 							type="button"

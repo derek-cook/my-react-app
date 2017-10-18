@@ -14,7 +14,7 @@ export default {
     },
 
     post: (url, body, callback) => {
-        fetch('/api/employee', {
+        fetch(url, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
@@ -33,7 +33,15 @@ export default {
 
     },
 
-    delete: () => {
-
+    delete: (url, params, callback) => {
+        fetch(url, {
+            method: 'DELETE',
+            params: params
+        })
+        .then(res => res.json())
+        .then(json => {
+            callback(null, json);
+            //TODO: implement error catch
+        });
     }
 }

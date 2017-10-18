@@ -60,7 +60,25 @@ class EmployeeTable extends Component {
 	}
 
 	deleteEmployee(id) {
-		console.log("DELETE ID: " + id);
+		console.log("Processing deletion: " + id);
+
+		APIManager.delete('/api/employee/'+id, null, (err, res) => {
+
+			if(err) {
+				alert('ERROR: ' + err.message);
+				return;
+			}
+
+			// Note: possible optimization could be to give each row an index upon mounting,
+			// then delete that index from the employee array.
+			let newEmployees = this.state.employees.filter((employee) => {
+				return employee._id !== id;
+			});
+
+			this.setState({employees: newEmployees})
+
+			console.log("Employee deleted. RES: " + JSON.stringify(res));
+		});
 	}
 
 

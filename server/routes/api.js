@@ -90,4 +90,34 @@ router.post('/:resource', (req, res, next) => {
     });
 });
 
+router.delete('/:resource/:id', (req, res, next) => {
+    var resource = req.params.resource;
+    var id = req.params.id;
+    var controller = controllers[resource];
+
+    if (controller == null) {
+        res.json({
+            confirmation: 'fail',
+            message: 'Invalid resource request: ' + resource
+        });
+
+        return;
+    }
+
+    controller.destroy(id, (err, result) => {
+        if (err) {
+            res.json({
+                confirmation: 'fail',
+                message: err
+            });
+            return;
+        }
+
+        res.json({
+            confirmation: 'successful deletion',
+            id: result
+        });
+    });
+});
+
 module.exports = router;
