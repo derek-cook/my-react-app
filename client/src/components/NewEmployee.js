@@ -42,6 +42,7 @@ class NewEmployee extends Component {
 
 		return (
 			<tr>
+				<td></td>
 				<td><FormControl name="first_name" type="text" placeholder="First name" value={this.state.first_name} onChange={this.handleInputChange}/></td>
 				<td><FormControl name="last_name" type="text" placeholder="Last name" value={this.state.last_name} onChange={this.handleInputChange}/></td>
 				<td><FormControl name="email" type="email" placeholder="Email" value={this.state.email} onChange={this.handleInputChange}/></td>

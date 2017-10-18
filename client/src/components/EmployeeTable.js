@@ -3,6 +3,7 @@ import TableItem from './TableItem';
 import NewEmployee from './NewEmployee';
 import { Link, Route,  } from 'react-router-dom';
 import APIManager from '../utils/APIManager';
+import { Table } from 'react-bootstrap';
 
 class EmployeeTable extends Component {
 	constructor(props) {
@@ -73,12 +74,12 @@ class EmployeeTable extends Component {
 		}
 
 		return (
-			<div className="container table-container">
+			<div className="container">
 				<div className="btn-group table-options" role="group" aria-label="...">
 				  <Link to={`${this.props.match.url}/new-employee`}><button type="button" className="btn btn-default"><span className="glyphicon glyphicon-plus"></span></button></Link>
 				</div>
 				<h2>{this.props.title}</h2>
-				<table className="table table-responsive table-bordered table-hover">
+				<Table hover className="table table-responsive table-container">
 					<thead>
 						<tr>
 							<th></th>
@@ -93,7 +94,7 @@ class EmployeeTable extends Component {
 							<NewEmployee {...props} addEmployee={this.addEmployee}/>}></Route>
 						{newItems}
 					</tbody>
-				</table>
+				</Table>
 
 			</div>
 		)

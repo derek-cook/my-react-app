@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Glyphicon} from 'react-bootstrap';
+import {Button, Glyphicon, ButtonToolbar} from 'react-bootstrap';
 
 
 class TableItem extends Component {
@@ -7,7 +7,22 @@ class TableItem extends Component {
 		return (
 			
 			<tr>
-				<td><Button bsStyle="danger" bsSize="xsmall"><Glyphicon glyph="remove"/> </Button></td>
+				<td className="td-actions">
+					<ButtonToolbar className="button-toolbar">
+						<Button 
+							type="button"
+							bsStyle="danger" 
+							bsSize="xsmall">
+							<Glyphicon glyph="remove"/> 
+						</Button>
+						<Button 
+							type="button"
+							bsStyle="info" 
+							bsSize="xsmall">
+							<Glyphicon glyph="edit"/> 
+						</Button>
+					</ButtonToolbar>
+				</td>
 				<td>{this.props.item.first_name}</td>
 				<td>{this.props.item.last_name}</td>
 				<td>{this.props.item.email}</td>
