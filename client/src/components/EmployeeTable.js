@@ -39,8 +39,6 @@ class EmployeeTable extends Component {
 
 	addEmployee(employee) {
 
-		let newEmployees = Object.assign({}, this.state.employees);
-
 		// the payload (or body of request) is employee, second param
 		APIManager.post('/api/employee', employee, (err, res) => {
 			if(err) {
@@ -51,9 +49,7 @@ class EmployeeTable extends Component {
 			var createdEmployee = res.result;
 			let newState = Object.assign({}, this.state);
 			newState.employees.unshift(createdEmployee);
-			this.setState({
-				employees: newState.employees
-			});
+			this.setState(newState);
 			// handle redirect
 			// window.location.href = 'http://localhost:3000/employees';
 		})
