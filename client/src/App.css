@@ -8,7 +8,7 @@
   text-align: left;
 }
 
-.table-container {
+tbody {
   overflow: scroll;
 }
 

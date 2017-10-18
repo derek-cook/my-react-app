@@ -18,13 +18,13 @@ class EmployeeTable extends Component {
 	componentDidMount() {
 		console.log("COMPONENT MOUNTED.\n");
 		// use API Manager util (or make axios/fetch get request here)
-		let updatedState = Object.assign({}, this.state);
+		let updatedState = [];
 		// no payload in GET request, second param is null
 		APIManager.get('/api/employee', null, (err, res) => {
-			res.results.map((employee) => {
-				updatedState.employees.push(employee);
+			res.results.forEach((employee) => {
+				updatedState.push(employee);
 			});
-			this.setState(updatedState);
+			this.setState({employees: updatedState});
 		});
 
 		// Any code writen here might be processed before the above GET request is finished!
