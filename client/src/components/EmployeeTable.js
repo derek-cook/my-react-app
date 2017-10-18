@@ -13,6 +13,7 @@ class EmployeeTable extends Component {
 		}
 
 		this.addEmployee = this.addEmployee.bind(this);
+		this.deleteEmployee = this.deleteEmployee.bind(this);
 	}
 
 	componentDidMount() {
@@ -45,16 +46,21 @@ class EmployeeTable extends Component {
 				alert('ERROR: ' + err.message);
 				return;
 			}
-			console.log('EMPL CREATED: ' + JSON.stringify(res));
+			console.log('EMPLOYEE CREATED: ' + JSON.stringify(res));
+
+			// set state
 			var createdEmployee = res.result;
 			let newState = Object.assign({}, this.state);
 			newState.employees.unshift(createdEmployee);
 			this.setState(newState);
-			// handle redirect
-			// window.location.href = 'http://localhost:3000/employees';
-		})
 
-		
+			// handle redirect, this will clear the condsole before mounting new component
+			// window.location.href = 'http://localhost:3000/employees';
+		});
+	}
+
+	deleteEmployee(id) {
+		console.log("DELETE ID: " + id);
 	}
 
 
@@ -64,7 +70,7 @@ class EmployeeTable extends Component {
 		if (this.state.employees) {
 			newItems = this.state.employees.map((item) => {
 				return (
-					<TableItem key={item._id} item={item} />
+					<TableItem key={item._id} item={item} deleteEmployee={this.deleteEmployee}/>
 				);
 			});
 		}

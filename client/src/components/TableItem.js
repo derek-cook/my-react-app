@@ -3,6 +3,21 @@ import {Button, Glyphicon, ButtonToolbar} from 'react-bootstrap';
 
 
 class TableItem extends Component {
+
+	// TODO: use a boolean attribute for the edit state of a row
+	constructor(props) {
+		super(props);
+
+		this.handleDelete = this.handleDelete.bind(this);
+	}
+
+
+	handleDelete() {
+		// Note: this.props.key is not a usable prop, use this.props.item._id
+		let id = this.props.item._id;
+		this.props.deleteEmployee(id);
+	}
+
 	render() {
 		return (
 			
@@ -13,7 +28,8 @@ class TableItem extends Component {
 							type="button"
 							bsStyle="danger" 
 							bsSize="xsmall">
-							<Glyphicon glyph="remove"/> 
+							<Glyphicon glyph="remove"
+							onClick={this.handleDelete}/> 
 						</Button>
 						<Button 
 							type="button"
