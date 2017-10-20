@@ -19,7 +19,7 @@ class Layout extends Component {
         <Navbar/>
         <Route exact path="/" component={DashboardHome}></Route>
         <Route path="/employees" render={(props) => 
-          <EmployeeTable {...props} title="Employees" items={tableItems}/>}>
+          <EmployeeTable {...props} title="Employees" items={tableItems} handleNotification={this.props.handleNotification}/>}>
         </Route>
         <Route path="/schedule" component={Schedule}></Route>
         <Footer/>

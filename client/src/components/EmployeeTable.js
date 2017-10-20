@@ -3,7 +3,7 @@ import TableItem from './TableItem';
 import NewEmployee from './NewEmployee';
 import { Link, Route,  } from 'react-router-dom';
 import APIManager from '../utils/APIManager';
-import { Table } from 'react-bootstrap';
+import { Table, Glyphicon } from 'react-bootstrap';
 
 class EmployeeTable extends Component {
 	constructor(props) {
@@ -59,8 +59,20 @@ class EmployeeTable extends Component {
 			newState.employees.unshift(createdEmployee);
 			this.setState(newState);
 
+			this.props.handleNotification({
+				title: (<Glyphicon data-notify="icon" glyph="glyphicon glyphicon-ok-sign"/>),
+				message: (
+					<div>
+						Employee successfully added.
+					</div>
+				),
+				level: 'success',
+				position: 'tc',
+				autoDismiss: 3,
+			});
+
 			// Warning: handle redirect, this will clear the console before mounting new component
-			window.location.href = 'http://localhost:3000/employees';
+			// window.location.href = 'http://localhost:3000/employees';
 		});
 	}
 
@@ -80,7 +92,19 @@ class EmployeeTable extends Component {
 				return employee._id !== id;
 			});
 
-			this.setState({employees: newEmployees})
+			this.setState({employees: newEmployees});
+
+			this.props.handleNotification({
+				title: (<Glyphicon data-notify="icon" glyph="glyphicon glyphicon-ok-sign"/>),
+				message: (
+					<div>
+						Employee successfully deleted.
+					</div>
+				),
+				level: 'error',
+				position: 'tc',
+				autoDismiss: 3,
+			});
 
 			console.log("Employee deleted. RES: " + JSON.stringify(res));
 		});
@@ -96,6 +120,18 @@ class EmployeeTable extends Component {
 			}
 
 			this.populateEmployees();
+
+			this.props.handleNotification({
+				title: (<Glyphicon data-notify="icon" glyph="glyphicon glyphicon-ok-sign"/>),
+				message: (
+					<div>
+						Employee successfully updated.
+					</div>
+				),
+				level: 'info',
+				position: 'tc',
+				autoDismiss: 3,
+			});
 		})
 	}
 
