@@ -31,15 +31,16 @@ h2 {
   background-color: #f5f5f5;
 }
 
-.td-actions {
+#td-actions {
   width: 100px;
+  vertical-align: middle;
 }
 
-tr td.td-actions button {
+tr td#td-actions button {
   opacity: 0.25;
 }
 
-tr:hover td.td-actions button {
+tr:hover td#td-actions button {
   /* display: block; */
   opacity: 1;
 }

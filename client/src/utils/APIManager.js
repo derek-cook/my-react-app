@@ -29,8 +29,20 @@ export default {
         })
     },
 
-    put: () => {
-
+    put: (url, body, callback) => {
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+        .then((res) => res.json())
+        .then((json) => {
+            callback(null, json);
+            //TODO: implement error catch
+        })
     },
 
     delete: (url, params, callback) => {

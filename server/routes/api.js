@@ -90,6 +90,36 @@ router.post('/:resource', (req, res, next) => {
     });
 });
 
+router.put('/:resource/:id', (req, res, next) => {
+    var resource = req.params.resource;
+    var id = req.params.id;
+    var controller = controllers[resource];
+
+    if (controller == null) {
+        res.json({
+            confirmation: 'fail',
+            message: 'Invalid resource request: ' + resource
+        });
+
+        return;
+    }
+
+    controller.update(id, req.body, (err, result) => {
+        if (err) {
+            res.json({
+                confirmation: 'fail',
+                message: err
+            });
+            return;
+        }
+        res.json({
+            confirmation: 'success',
+            result: result,
+            redirectURL: '/employees'
+        });
+    })
+});
+
 router.delete('/:resource/:id', (req, res, next) => {
     var resource = req.params.resource;
     var id = req.params.id;

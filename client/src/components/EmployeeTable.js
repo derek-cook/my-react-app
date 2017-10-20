@@ -12,21 +12,15 @@ class EmployeeTable extends Component {
 			employees: []
 		}
 
+		this.populateEmployees = this.populateEmployees.bind(this);
 		this.addEmployee = this.addEmployee.bind(this);
 		this.deleteEmployee = this.deleteEmployee.bind(this);
+		this.updateEmployee = this.updateEmployee.bind(this);
 	}
 
 	componentDidMount() {
 		console.log("COMPONENT MOUNTED.\n");
-		// use API Manager util (or make axios/fetch get request here)
-		let updatedState = [];
-		// no payload in GET request, second param is null
-		APIManager.get('/api/employee', null, (err, res) => {
-			res.results.forEach((employee) => {
-				updatedState.push(employee);
-			});
-			this.setState({employees: updatedState});
-		});
+		this.populateEmployees();
 
 		// Any code writen here might be processed before the above GET request is finished!
 
@@ -36,6 +30,17 @@ class EmployeeTable extends Component {
 		// {"first_name":"Frankie","last_name":"Duggan","email":"fduggan3@whitehouse.gov","address":"8 Montana Alley"},
 		// {"first_name":"Paddie","last_name":"Lockner","email":"plockner4@blog.com","address":"6679 Dovetail Parkway"}]
 		// });
+	}
+
+	populateEmployees() {
+		let updatedState = [];
+		// no payload in GET request, second param is null
+		APIManager.get('/api/employee', null, (err, res) => {
+			res.results.forEach((employee) => {
+				updatedState.push(employee);
+			});
+			this.setState({employees: updatedState});
+		});
 	}
 
 	addEmployee(employee) {
@@ -54,8 +59,8 @@ class EmployeeTable extends Component {
 			newState.employees.unshift(createdEmployee);
 			this.setState(newState);
 
-			// handle redirect, this will clear the condsole before mounting new component
-			// window.location.href = 'http://localhost:3000/employees';
+			// Warning: handle redirect, this will clear the console before mounting new component
+			window.location.href = 'http://localhost:3000/employees';
 		});
 	}
 
@@ -81,6 +86,19 @@ class EmployeeTable extends Component {
 		});
 	}
 
+	updateEmployee(id, employee) {
+		
+		APIManager.put('/api/employee/'+id, employee, (err, res) => {
+
+			if (err) {
+				alert('ERROR: ' + err.message);
+				return;
+			}
+
+			this.populateEmployees();
+		})
+	}
+
 
 	render() {
 
@@ -88,7 +106,7 @@ class EmployeeTable extends Component {
 		if (this.state.employees) {
 			newItems = this.state.employees.map((item) => {
 				return (
-					<TableItem key={item._id} item={item} deleteEmployee={this.deleteEmployee}/>
+					<TableItem key={item._id} item={item} deleteEmployee={this.deleteEmployee} updateEmployee={this.updateEmployee}/>
 				);
 			});
 		}
