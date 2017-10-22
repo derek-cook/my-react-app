@@ -88,11 +88,11 @@ class EmployeeTable extends Component {
 
 			// Note: possible optimization could be to give each row an index upon mounting,
 			// then delete that index from the employee array.
-			let newEmployees = this.state.employees.filter((employee) => {
-				return employee._id !== id;
-			});
-
-			this.setState({employees: newEmployees});
+			// let newEmployees = this.state.employees.filter((employee) => {
+			// 	return employee._id !== id;
+			// });
+			// this.setState({employees: newEmployees});
+			this.populateEmployees();
 
 			this.props.handleNotification({
 				title: (<Glyphicon data-notify="icon" glyph="glyphicon glyphicon-ok-sign"/>),
