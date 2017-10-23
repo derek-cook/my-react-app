@@ -21,11 +21,9 @@ class TableItem extends Component {
 
 	handleInputChange(e) {
 		const name = e.target.name;
-		console.log("NAME before: "+ name );
 		const value = e.target.value;
 		var newDetails = Object.assign({}, this.state.editDetails);
 		newDetails[name] = value;
-		console.log("NAME: "+ JSON.stringify(newDetails));
 		this.setState({editDetails: newDetails});
 
 		// Alternative syntax for computed values since it is a nested state object

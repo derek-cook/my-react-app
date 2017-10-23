@@ -71,7 +71,7 @@ class EmployeeTable extends Component {
 				autoDismiss: 3,
 			});
 
-			// Warning: handle redirect, this will clear the console before mounting new component
+			// Warning: handle redirect, this will clear the console and notifications before mounting new component
 			// window.location.href = 'http://localhost:3000/employees';
 		});
 	}
