@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TableItem from './TableItem';
 import NewEmployee from './NewEmployee';
-import { Link, Route,  } from 'react-router-dom';
+import { Link, Route, Redirect } from 'react-router-dom';
 import APIManager from '../utils/APIManager';
 import { Table, Glyphicon } from 'react-bootstrap';
 
@@ -9,7 +9,7 @@ class EmployeeTable extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			employees: []
+			employees: [],
 		}
 
 		this.populateEmployees = this.populateEmployees.bind(this);
@@ -21,6 +21,7 @@ class EmployeeTable extends Component {
 	componentDidMount() {
 		console.log("COMPONENT MOUNTED.\n");
 		this.populateEmployees();
+		console.log("PROPS: "+ JSON.stringify(this.props));
 
 		// Any code writen here might be processed before the above GET request is finished!
 
@@ -39,7 +40,9 @@ class EmployeeTable extends Component {
 			res.results.forEach((employee) => {
 				updatedState.push(employee);
 			});
-			this.setState({employees: updatedState});
+			this.setState({
+				employees: updatedState
+			});
 		});
 	}
 
@@ -58,6 +61,9 @@ class EmployeeTable extends Component {
 			let newState = Object.assign({}, this.state);
 			newState.employees.unshift(createdEmployee);
 			this.setState(newState);
+
+			// this.setState({shouldRedirect: true});
+			// console.log("Set should redirect to true");
 
 			this.props.handleNotification({
 				title: (<Glyphicon data-notify="icon" glyph="glyphicon glyphicon-ok-sign"/>),
