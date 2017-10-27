@@ -8,16 +8,20 @@
 4. Make sure you have MongoDB installed.
 5. Run ```mongod```
 ### Run the server
-6. Go to my-react-app project folder, then ```cd server```
+6. Go to my-react-app project directory, then ```cd server```
 7. Install dependencies: ```npm install```
 8. Start server: ```npm start```
 9. (Optional) To test requests on the server directly, try in the browser: `http://localhost:3001/api/employee`
     or use Postman.
 ### Run the client
-10. Go to the my-react-app project, then ```cd client```
+10. Go to the my-react-app project directory, then ```cd client```
 11. Install dependencies: ```npm install```
 12. Start react client: ```npm start```
 13. Navigate to `http://localhost:3000/` and try adding an employee
+
+**Protip:** Instead of running mongo, the express server, and the react client seperately, optionally use ```concurrently```
+Install: ```npm install -g concurrently```
+Run from project directory: ```concurrently "mongod" "cd server && npm start" "cd client && npm start"```
 
 ## About
 This project is an ongoing demo of a full stack react application. 
