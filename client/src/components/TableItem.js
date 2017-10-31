@@ -95,7 +95,7 @@ class TableItem extends Component {
 		);
 
 		let setRow = (
-			<tr>
+			<tr onClick={this.props.handleClick}>
 				<td id="td-actions">
 					<ButtonToolbar className="button-toolbar">
 						<Button 

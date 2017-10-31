@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import TableItem from './TableItem';
 import NewEmployee from './NewEmployee';
-import { Link, Route, Redirect } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import APIManager from '../utils/APIManager';
 import { Table, Glyphicon } from 'react-bootstrap';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { selectEmployee } from '../actions';
 
 class EmployeeTable extends Component {
 	constructor(props) {
@@ -143,12 +146,13 @@ class EmployeeTable extends Component {
 
 
 	render() {
+		console.log("PROPS", this.props)
 
 		let newItems;
 		if (this.state.employees) {
 			newItems = this.state.employees.map((item) => {
 				return (
-					<TableItem key={item._id} item={item} deleteEmployee={this.deleteEmployee} updateEmployee={this.updateEmployee}/>
+					<TableItem key={item._id} item={item} deleteEmployee={this.deleteEmployee} updateEmployee={this.updateEmployee} handleClick={ () => this.props.dispatch(selectEmployee(item)) }/>
 				);
 			});
 		}
@@ -180,4 +184,14 @@ class EmployeeTable extends Component {
 		)
 	}
 }
-export default EmployeeTable;
+
+let matchDispatchToProps = (dispatch) => {
+	return bindActionCreators({selectEmployee: selectEmployee}, dispatch);
+}
+
+let mapStateToProps = (state) => {
+	return {
+		employees: state.employees
+	};
+}
+export default connect(mapStateToProps)(EmployeeTable);
