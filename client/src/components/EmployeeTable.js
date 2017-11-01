@@ -185,7 +185,7 @@ class EmployeeTable extends Component {
 	}
 }
 
-let matchDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({selectEmployee: selectEmployee}, dispatch);
 }
 
@@ -194,4 +194,4 @@ let mapStateToProps = (state) => {
 		employees: state.employees
 	};
 }
-export default connect(mapStateToProps)(EmployeeTable);
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeeTable);
