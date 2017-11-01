@@ -152,7 +152,7 @@ class EmployeeTable extends Component {
 		if (this.state.employees) {
 			newItems = this.state.employees.map((item) => {
 				return (
-					<TableItem key={item._id} item={item} deleteEmployee={this.deleteEmployee} updateEmployee={this.updateEmployee} handleClick={ () => this.props.dispatch(selectEmployee(item)) }/>
+					<TableItem key={item._id} item={item} deleteEmployee={this.deleteEmployee} updateEmployee={this.updateEmployee} handleClick={ () => this.props.selectEmployee(item) }/>
 				);
 			});
 		}
