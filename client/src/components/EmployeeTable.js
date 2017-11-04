@@ -24,7 +24,6 @@ class EmployeeTable extends Component {
 	componentDidMount() {
 		console.log("COMPONENT MOUNTED.\n");
 		this.populateEmployees();
-		console.log("PROPS: "+ JSON.stringify(this.props));
 
 		// Any code writen here might be processed before the above GET request is finished!
 
@@ -146,7 +145,6 @@ class EmployeeTable extends Component {
 
 
 	render() {
-		console.log("PROPS", this.props)
 
 		let newItems;
 		if (this.state.employees) {
