@@ -4,15 +4,15 @@ import NewEmployee from './NewEmployee';
 import { Link, Route } from 'react-router-dom';
 import APIManager from '../utils/APIManager';
 import { Table, Glyphicon } from 'react-bootstrap';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { selectEmployee } from '../actions';
+import actions from '../actions';
 
 class EmployeeTable extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			employees: [],
+			// employees: [],
 		}
 
 		this.populateEmployees = this.populateEmployees.bind(this);
@@ -50,38 +50,42 @@ class EmployeeTable extends Component {
 
 	addEmployee(employee) {
 
-		// the payload (or body of request) is employee, second param
-		APIManager.post('/api/employee', employee, (err, res) => {
-			if(err) {
-				alert('ERROR: ' + err.message);
-				return;
-			}
-			console.log('EMPLOYEE CREATED: ' + JSON.stringify(res));
+		this.props.createEmployee(employee);
 
-			// set state
-			var createdEmployee = res.result;
-			let newState = Object.assign({}, this.state);
-			newState.employees.unshift(createdEmployee);
-			this.setState(newState);
+		// // the payload (or body of request) is employee, second param
+		// APIManager.post('/api/employee', employee, (err, res) => {
+		// 	if(err) {
+		// 		alert('ERROR: ' + err.message);
+		// 		return;
+		// 	}
+		// 	console.log('EMPLOYEE CREATED: ' + JSON.stringify(res));
 
-			// this.setState({shouldRedirect: true});
-			// console.log("Set should redirect to true");
+		// 	// set state
+		// 	var createdEmployee = res.result;
+		// 	let newState = Object.assign({}, this.state);
+		// 	newState.employees.unshift(createdEmployee);
+		// 	this.setState(newState);
 
-			this.props.handleNotification({
-				title: (<Glyphicon data-notify="icon" glyph="glyphicon glyphicon-ok-sign"/>),
-				message: (
-					<div>
-						Employee successfully added.
-					</div>
-				),
-				level: 'success',
-				position: 'tc',
-				autoDismiss: 3,
-			});
+		// 	// this.setState({shouldRedirect: true});
+		// 	// console.log("Set should redirect to true");
 
-			// Warning: handle redirect, this will clear the console and notifications before mounting new component
-			// window.location.href = 'http://localhost:3000/employees';
-		});
+		// 	this.props.handleNotification({
+		// 		title: (<Glyphicon data-notify="icon" glyph="glyphicon glyphicon-ok-sign"/>),
+		// 		message: (
+		// 			<div>
+		// 				Employee successfully added.
+		// 			</div>
+		// 		),
+		// 		level: 'success',
+		// 		position: 'tc',
+		// 		autoDismiss: 3,
+		// 	});
+
+		// 	// Warning: handle redirect, this will clear the console and notifications before mounting new component
+		// 	// window.location.href = 'http://localhost:3000/employees';
+		// });
+
+
 	}
 
 	deleteEmployee(id) {
@@ -146,9 +150,11 @@ class EmployeeTable extends Component {
 
 	render() {
 
+		const employees = this.props.employee.employees;
+
 		let newItems;
 		if (this.state.employees) {
-			newItems = this.state.employees.map((item) => {
+			newItems = employees.map((item) => {
 				return (
 					<TableItem key={item._id} item={item} deleteEmployee={this.deleteEmployee} updateEmployee={this.updateEmployee} handleClick={ () => this.props.selectEmployee(item) }/>
 				);
@@ -184,12 +190,19 @@ class EmployeeTable extends Component {
 }
 
 let mapDispatchToProps = (dispatch) => {
-	return bindActionCreators({selectEmployee: selectEmployee}, dispatch);
+	// alternative way of defining dispatch functions by action
+	// return bindActionCreators({selectEmployee: selectEmployee}, dispatch);
+	
+	return {
+		createEmployee: (employee) => dispatch(actions.createEmployee(employee)),
+		selectEmployee: (employee) => dispatch(actions.selectEmployee(employee))
+		
+	}
 }
 
 let mapStateToProps = (state) => {
 	return {
-		employees: state.employees
+		employee: state.employee
 	};
 }
 export default connect(mapStateToProps, mapDispatchToProps)(EmployeeTable);

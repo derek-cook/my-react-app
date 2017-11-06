@@ -1,8 +1,20 @@
-export const selectEmployee = (employee) => {
-    console.log("Selected Empl: ", JSON.stringify(employee));
+export default {
 
-    return {
-        type: "USER_SELECTED",
-        payload: employee
+    selectEmployee: (employee) => {
+        console.log("Selected Empl: ", JSON.stringify(employee));
+
+        return {
+            type: "EMPLOYEE_SELECTED",
+            payload: employee
+        }
+    },
+
+    createEmployee: (employee) => {
+        console.log("ADD EMPLOYEE ACTION");
+
+        return {
+            type: "CREATE_EMPLOYEE",
+            payload: employee
+        }
     }
 }
