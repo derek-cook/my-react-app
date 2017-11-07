@@ -9,9 +9,8 @@ export default (state = initialState, action) => {
         case ('CREATE_EMPLOYEE'):
             console.log('CREATE EMPLOYEE ACTION: ' + JSON.stringify(action));
 
-            let all = Object.assign([], newState.all);
-            all.push(action.payload);
-            newState[all] = all;
+            
+            newState.all.push(action.payload);
             return newState;
 
         default:

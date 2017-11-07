@@ -7,14 +7,14 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import store from './store';
 
-let appStore = store.createStore();
+let reduxStore = store.createStore();
 
-appStore.subscribe(() => {
-	console.log("STORE CHANGE: ", appStore.getState());
+reduxStore.subscribe(() => {
+	console.log("STORE CHANGE: ", reduxStore.getState());
 });
 
 ReactDOM.render((
-	<Provider store={ appStore }> 
+	<Provider store={ reduxStore }> 
 		<Router>
 			<App/>
 		</Router>

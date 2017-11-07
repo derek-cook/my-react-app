@@ -25,6 +25,8 @@ class EmployeeTable extends Component {
 		console.log("COMPONENT MOUNTED.\n");
 		this.populateEmployees();
 
+		
+
 		// Any code writen here might be processed before the above GET request is finished!
 
 		// this.setState({employees: [{"first_name":"Binky","last_name":"Gorgl","email":"bgorgl0@vkontakte.ru","address":"13198 Lakewood Alley"},
@@ -36,16 +38,18 @@ class EmployeeTable extends Component {
 	}
 
 	populateEmployees() {
-		let updatedState = [];
-		// no payload in GET request, second param is null
-		APIManager.get('/api/employee', null, (err, res) => {
-			res.results.forEach((employee) => {
-				updatedState.push(employee);
-			});
-			this.setState({
-				employees: updatedState
-			});
-		});
+		// let updatedState = [];
+		// // no payload in GET request, second param is null
+		// APIManager.get('/api/employee', null, (err, res) => {
+		// 	res.results.forEach((employee) => {
+		// 		updatedState.push(employee);
+		// 	});
+		// 	this.setState({
+		// 		employees: updatedState
+		// 	});
+		// });
+
+
 	}
 
 	addEmployee(employee) {
@@ -150,13 +154,14 @@ class EmployeeTable extends Component {
 
 	render() {
 
-		const employees = this.props.employee.employees;
+		const employees = this.props.employee.all;
+		console.log("EMPLOYEE : ", JSON.stringify(this.props.employee));
 
 		let newItems;
-		if (this.state.employees) {
+		if (employees) {
 			newItems = employees.map((item) => {
 				return (
-					<TableItem key={item._id} item={item} deleteEmployee={this.deleteEmployee} updateEmployee={this.updateEmployee} handleClick={ () => this.props.selectEmployee(item) }/>
+					<TableItem key={item.first_name} item={item} deleteEmployee={this.deleteEmployee} updateEmployee={this.updateEmployee} handleClick={ () => this.props.selectEmployee(item) }/>
 				);
 			});
 		}
