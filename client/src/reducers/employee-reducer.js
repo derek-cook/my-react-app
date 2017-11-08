@@ -13,6 +13,12 @@ export default (state = initialState, action) => {
             newState.all.push(action.payload);
             return newState;
 
+        case ('FETCH_EMPLOYEES'):
+            console.log("FETCH EEMPLOYEES ACTION RECIEVED", JSON.stringify(action));
+
+            newState.all = action.payload;
+            return newState;
+
         default:
             return state;
     }

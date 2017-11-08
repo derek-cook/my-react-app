@@ -23,7 +23,8 @@ class EmployeeTable extends Component {
 
 	componentDidMount() {
 		console.log("COMPONENT MOUNTED.\n");
-		this.populateEmployees();
+		// this.populateEmployees();
+		this.props.fetchEmployees();
 
 		
 
@@ -200,7 +201,8 @@ let mapDispatchToProps = (dispatch) => {
 	
 	return {
 		createEmployee: (employee) => dispatch(actions.createEmployee(employee)),
-		selectEmployee: (employee) => dispatch(actions.selectEmployee(employee))
+		selectEmployee: (employee) => dispatch(actions.selectEmployee(employee)),
+		fetchEmployees: () => dispatch(actions.fetchEmployees())
 		
 	}
 }
