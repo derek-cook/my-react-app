@@ -6,7 +6,7 @@ import APIManager from '../utils/APIManager';
 import { Table, Glyphicon } from 'react-bootstrap';
 // import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import actions from '../actions';
+import * as actions from '../actions';
 
 class EmployeeTable extends Component {
 	constructor(props) {
