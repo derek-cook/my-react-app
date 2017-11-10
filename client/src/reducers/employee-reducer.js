@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
             console.log('CREATE EMPLOYEE ACTION: ' + JSON.stringify(action));
 
             
-            newState.all.push(action.payload);
+            newState.all.unshift(action.payload);
             return newState;
 
         case ('FETCH_EMPLOYEES'):

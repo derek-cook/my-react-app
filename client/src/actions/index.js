@@ -24,8 +24,16 @@ export function selectEmployee(employee) {
 export function createEmployee(employee) {
         console.log("ADD EMPLOYEE ACTION");
 
-        return {
-            type: "CREATE_EMPLOYEE",
-            payload: employee
-        }
+        return (dispatch) => {
+            APIManager.post('/api/employee', employee, (err, res) => {
+                if(err) {
+                    alert('ERROR: ' + err.message);
+                    return;
+                }
+                console.log('EMPLOYEE CREATED: ' + JSON.stringify(res));
+
+                dispatch({type:"CREATE_EMPLOYEE", payload: res.result});
+
+            });
+        };
 };

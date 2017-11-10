@@ -57,6 +57,21 @@ class EmployeeTable extends Component {
 
 		this.props.createEmployee(employee);
 
+		this.props.handleNotification({
+			title: (<Glyphicon data-notify="icon" glyph="glyphicon glyphicon-ok-sign"/>),
+			message: (
+				<div>
+					Employee successfully added.
+				</div>
+			),
+			level: 'success',
+			position: 'tc',
+			autoDismiss: 3,
+		});
+
+		// Warning: handle redirect, this will clear the console and notifications before mounting new component
+		// window.location.href = 'http://localhost:3000/employees';
+
 		// // the payload (or body of request) is employee, second param
 		// APIManager.post('/api/employee', employee, (err, res) => {
 		// 	if(err) {
@@ -160,8 +175,9 @@ class EmployeeTable extends Component {
 		let newItems;
 		if (employees) {
 			newItems = employees.map((item) => {
+				console.log(JSON.stringify(item));
 				return (
-					<TableItem key={item.first_name} item={item} deleteEmployee={this.deleteEmployee} updateEmployee={this.updateEmployee} handleClick={ () => this.props.selectEmployee(item) }/>
+					<TableItem key={item._id} item={item} deleteEmployee={this.deleteEmployee} updateEmployee={this.updateEmployee} handleClick={ () => this.props.selectEmployee(item) }/>
 				);
 			});
 		}
