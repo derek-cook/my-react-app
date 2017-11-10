@@ -156,7 +156,6 @@ class EmployeeTable extends Component {
 	render() {
 
 		const employees = this.props.employee.all;
-		console.log("EMPLOYEE : ", JSON.stringify(this.props.employee));
 
 		let newItems;
 		if (employees) {
@@ -196,7 +195,7 @@ class EmployeeTable extends Component {
 }
 
 let mapDispatchToProps = (dispatch) => {
-	// alternative way of defining dispatch functions by action
+	// alternative way of mapping action creators
 	// return bindActionCreators({selectEmployee: selectEmployee}, dispatch);
 	
 	return {
