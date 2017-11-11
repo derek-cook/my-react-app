@@ -1,5 +1,5 @@
 var initialState = {
-    all: [{"_id":"59ece17e45f5fb30033a0359","__v":0,"address":"123 Main St","email":"dcook","last_name":"Cook","first_name":"Derekk"}]
+    all: []
 }
 
 export default (state = initialState, action) => {
