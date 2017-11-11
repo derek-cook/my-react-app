@@ -1,4 +1,5 @@
-# react-app in progress
+# React App
+This React app currently has a main branch for plain React state management, and a Redux branch for redux state management. This makes for a good visual comparison showing how a react app can change to implement redux state management. Compare main with redux to see the transition from component handled state to store handled state.
 
 ## Quick Start Demo
 1. Clone or download the repo into your system.
