@@ -1,7 +1,13 @@
-export default function(state=null, action) {
+var initialState = null;
+
+export default function(state=initialState, action) {
+
+    let newState = Object.assign({}, state);
+
     switch(action.type) {
         case "EMPLOYEE_SELECTED":
-            return action.payload;
+            newState = action.payload
+            return newState;
         default:
             return state;
     }

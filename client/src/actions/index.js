@@ -48,6 +48,7 @@ export function deleteEmployee(id) {
             }
 
             dispatch({type:"DELETE_EMPLOYEE", payload: id});
+            dispatch({type:"EMPLOYEE_SELECTED", payload: null});
 
         });
     }

@@ -32,6 +32,8 @@ class EmployeeTable extends Component {
 	addEmployee(employee) {
 
 		this.props.createEmployee(employee);
+		this.props.selectEmployee(employee); // dispatch the selectEmployee action to keep the EmployeeDetail up-to-date.
+		
 
 		// TODO: move notification handling to APIManager callback because this will fire whether or not the request succeeded.
 		this.props.handleNotification({
@@ -49,9 +51,10 @@ class EmployeeTable extends Component {
 	}
 
 	deleteEmployee(id) {
-		console.log("Processing deletion: " + id);
 		
 		this.props.deleteEmployee(id);
+		// selectedEmployee is set to null in the DELETE_EMPLOYEE action by dispatching EMPLOYEE_SELECTED right after deletion.
+		
 
 		// TODO: move notification handling to APIManager callback because this will fire whether or not the request succeeded.
 		this.props.handleNotification({
@@ -69,7 +72,8 @@ class EmployeeTable extends Component {
 
 	updateEmployee(id, employee) {
 
-		this.props.updateEmployee(id, employee);
+		this.props.updateEmployee(id, employee); // dispatch the update action
+		this.props.selectEmployee(employee); // dispatch the selectEmployee action to keep the EmployeeDetail up-to-date.
 
 		// TODO: move notification handling to APIManager callback because this will fire whether or not the request succeeded.
 		this.props.handleNotification({
@@ -101,7 +105,7 @@ class EmployeeTable extends Component {
 		}
 
 		return (
-			<div className="container">
+			<div className="container employee-table">
 				<div className="btn-group table-options" role="group" aria-label="...">
 				  <Link to={`${this.props.match.url}/new-employee`}><button type="button" className="btn btn-default"><span className="glyphicon glyphicon-plus"></span></button></Link>
 				</div>
