@@ -105,7 +105,7 @@ class EmployeeTable extends Component {
 		}
 
 		return (
-			<div className="container employee-table">
+			<div className="employee-table col-md-5">
 				<div className="btn-group table-options" role="group" aria-label="...">
 				  <Link to={`${this.props.match.url}/new-employee`}><button type="button" className="btn btn-default"><span className="glyphicon glyphicon-plus"></span></button></Link>
 				</div>

@@ -9,7 +9,7 @@ class EmployeeDetail extends Component {
       return (<h3>Please select an employee</h3>);
     }
     return (
-        <div className=" employee-detail">
+        <div className=" employee-detail col-md-5">
             <h1>{activeEmployee.first_name + " " + activeEmployee.last_name}</h1>
             <h3>{activeEmployee.email}</h3>
             <h3>{activeEmployee.address}</h3>

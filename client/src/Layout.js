@@ -21,7 +21,7 @@ class Layout extends Component {
         <div className="container main-content">
           <Route exact path="/" component={DashboardHome}></Route>
           <Route path="/employees" render={(props) =>
-            <div className="employee-view">
+            <div className="employee-view container-fluid row">
               <EmployeeTable {...props} className="employee-table" title="Employees" items={tableItems} handleNotification={this.props.handleNotification}/>
               <EmployeeDetail/>
             </div>}>
