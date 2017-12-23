@@ -1,5 +1,9 @@
+# React App
+This React app currently has a main branch for plain React state management, and a Redux branch for redux state management. This makes for a good visual comparison showing how a react app can change to implement redux state management. Compare main with redux to see the transition from component handled state to store handled state.
+=======
 # Full Stack React App with optional Redux Implementation
-This React app currently has a main branch for plain React state management, and a Redux branch for redux state management.  Compare main with redux to see the transition from component handled state (plain react) to store handled state (redux).
+This React app currently has a main branch Redux managed state, and a react-state branch for plain react state management.  
+Compare branches to see the transition from component handled state (plain react) to store handled state (redux).
 
 ## Quick Start Demo
 1. Clone or download the repo into your system.
