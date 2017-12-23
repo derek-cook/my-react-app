@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TableItem from './TableItem';
 import NewEmployee from './NewEmployee';
 import { Link, Route } from 'react-router-dom';
-// import APIManager from '../utils/APIManager';
+import APIManager from '../utils/APIManager';
 import { Table, Glyphicon } from 'react-bootstrap';
 // import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
